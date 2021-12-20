@@ -1,0 +1,31 @@
+# Worrkflow Name
+name: Workflow CI
+
+# Specific Trigger
+on: [pull_request]
+
+# All Jobs
+jobs:
+  
+  # Job Name
+  build:
+    
+    # Image Virtual Marchine
+    runs-on: ubuntu-20.04
+    
+    # All Steps
+    steps:
+
+      # Checkout to execute code into repository
+      - uses: actions/checkout@v2
+
+      # This step uses the action to install the specified version of the Node.js 
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.17.x'
+
+      # Run command line (install packages)
+      - run: npm ci
+
+      # Run command line (create build)
+      - run: npm run build
